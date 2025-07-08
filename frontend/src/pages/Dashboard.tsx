@@ -31,7 +31,7 @@ const Dashboard: React.FC = () => {
   const fetchUserAndNotes = async () => {
     try {
       // Check if user is logged in 
-      const authResponse = await fetch('http://localhost:3000/api/auth/is-loggedin', {
+      const authResponse = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/is-loggedin`, {
         method: 'GET',
         credentials: 'include',
       });
@@ -46,7 +46,7 @@ const Dashboard: React.FC = () => {
         setUser(authData.user);
         
         // Fetch notes for the authenticated user
-        const notesResponse = await fetch('http://localhost:3000/api/notes', {
+        const notesResponse = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/notes`, {
           method: 'GET',
           credentials: 'include',
         });
@@ -76,7 +76,7 @@ const Dashboard: React.FC = () => {
   // Sign out: call logout endpoint 
   const handleSignOut = async () => {
     try {
-      await fetch('http://localhost:3000/api/auth/logout', {
+      await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/logout`, {
         method: 'POST',
         credentials: 'include',
       });
@@ -105,7 +105,7 @@ const Dashboard: React.FC = () => {
 
     setDeleteLoading(noteId);
     try {
-      const response = await fetch(`http://localhost:3000/api/notes/${noteId}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/notes/${noteId}`, {
         method: 'DELETE',
         credentials: 'include',
       });

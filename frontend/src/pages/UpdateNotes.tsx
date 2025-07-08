@@ -28,7 +28,7 @@ const UpdateNotes: React.FC = () => {
   const checkAuthAndInitialize = async () => {
     try {
       // Check if user is logged in using the is-loggedin route
-      const response = await fetch('http://localhost:3000/api/auth/is-loggedin', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/is-loggedin`, {
         method: 'GET',
         credentials: 'include',
       });
@@ -64,7 +64,7 @@ const UpdateNotes: React.FC = () => {
   const fetchNote = async (noteId: string) => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:3000/api/notes/${noteId}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/notes/${noteId}`, {
         method: 'GET',
         credentials: 'include',
       });
@@ -110,8 +110,8 @@ const UpdateNotes: React.FC = () => {
 
     try {
       const url = isEditing 
-        ? `http://localhost:3000/api/notes/${id}`
-        : 'http://localhost:3000/api/notes';
+        ? `${import.meta.env.VITE_BACKEND_URL}/api/notes/${id}`
+        : `${import.meta.env.VITE_BACKEND_URL}/api/notes`;
       
       const method = isEditing ? 'PUT' : 'POST';
       
