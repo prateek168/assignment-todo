@@ -101,8 +101,8 @@ export const verifyOtp = asyncHandler(async (req: Request, res: Response) => {
 
     res.cookie("token", token, {
       httpOnly: true,       
-      secure: false,        
-      sameSite: "lax",      
+      secure: true,       
+      sameSite: 'none',      
       maxAge: 24 * 60 * 60 * 1000 
     });
 
@@ -179,8 +179,8 @@ export const oauthCallback = asyncHandler(async (req: Request, res: Response): P
     const token = signToken({ id: user.id, email: user.email });
     res.cookie("token", token, {
       httpOnly: true,       
-      secure: false,       
-      sameSite: "lax",   
+      secure: true,       
+      sameSite: 'none',   
       maxAge: 24 * 60 * 60 * 1000  
     });
     res.redirect(`${homepage}`);
