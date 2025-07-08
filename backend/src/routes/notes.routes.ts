@@ -9,6 +9,7 @@ import {
 import { asyncHandler } from '../utils/asyncHandler';
 import { requireAuth } from '../middlewares/auth.middleware';
 
+
 const router = express.Router();
 
 router.get('/', asyncHandler(requireAuth), asyncHandler(getNotes));
