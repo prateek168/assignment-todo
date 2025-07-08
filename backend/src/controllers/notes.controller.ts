@@ -100,6 +100,7 @@ export const updateNote = async (req: Request, res: Response) => {
   }
 };
 
+
 export const deleteNote = async (req: Request, res: Response) => {
   try {
     const userId = getUserId(req);
